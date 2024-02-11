@@ -36,8 +36,9 @@ func NewApp() (*Server, error) {
 func setupRouter() *fiber.App {
 
 	router := fiber.New(fiber.Config{
-		AppName:     "Shorty Manage Server",
-		ReadTimeout: 60 * time.Second,
+		AppName:      "Shorty Manage Server",
+		ReadTimeout:  60 * time.Second,
+		ErrorHandler: utils.CustomErrorHandler,
 	})
 
 	router.Use(LoggerMiddleware.New(LoggerMiddleware.Config{

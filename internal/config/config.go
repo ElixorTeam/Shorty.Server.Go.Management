@@ -10,7 +10,8 @@ import (
 var AppConfig Config
 
 type Config struct {
-	Port int `mapstructure:"PORT"`
+	Port  int  `mapstructure:"PORT"`
+	Debug bool `mapstructure:"DEBUG"`
 
 	DBDriver   string `mapstructure:"DB_DRIVER" validate:"required"`
 	DBName     string `mapstructure:"DB_NAME" validate:"required"`
@@ -39,7 +40,10 @@ func InitializeAppConfig() (err error) {
 	viper.AddConfigPath("/")
 	viper.AllowEmptyEnv(true)
 	viper.AutomaticEnv()
+
 	viper.SetDefault("PORT", 2000)
+	viper.SetDefault("DEBUG", false)
+
 	err = viper.ReadInConfig()
 	if err != nil {
 		return constants.ErrLoadConfig
