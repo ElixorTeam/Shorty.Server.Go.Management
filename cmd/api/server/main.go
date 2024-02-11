@@ -41,8 +41,10 @@ func setupRouter() *fiber.App {
 	})
 
 	router.Use(LoggerMiddleware.New(LoggerMiddleware.Config{
-		Format:        "[${ip}] ${status} - ${method} ${path}\n",
+		Format:        "[${ip}] [${time}] ${status} - ${method} ${path}\n",
 		DisableColors: false,
+		TimeFormat:    "02-01-2006/15:04:05",
+		TimeZone:      "Europe/Moscow",
 	}))
 	router.Use(HelmetMiddleware.New())
 
