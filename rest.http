@@ -2,5 +2,3 @@
 
 GET http://localhost:2000/example/test
 Authorization: Bearer {{$auth.token("access-token")}}
-My-Header: Penis
-My-Header: Penis xui
