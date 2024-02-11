@@ -14,11 +14,11 @@ type ExampleRoute struct {
 }
 
 func NewExampleRoute(api fiber.Router, rdc *redis.Client) *ExampleRoute {
-	KeycloaAuthMiddleware := middlewares.KeycloakAuthMiddleware(rdc)
+	AuthMiddleware := middlewares.KeycloakAuthMiddleware(rdc)
 
 	return &ExampleRoute{
 		router:         api,
-		AuthMiddleware: KeycloaAuthMiddleware,
+		AuthMiddleware: AuthMiddleware,
 	}
 }
 
