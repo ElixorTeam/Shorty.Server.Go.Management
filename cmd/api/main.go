@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Shorty.Server.Go.Mangment/cmd/api/server"
-	"Shorty.Server.Go.Mangment/pkg/logger"
+	"Shorty.Server.Go.Management/cmd/api/server"
+	"Shorty.Server.Go.Management/pkg/logger"
 	"github.com/sirupsen/logrus"
 	"runtime"
 )

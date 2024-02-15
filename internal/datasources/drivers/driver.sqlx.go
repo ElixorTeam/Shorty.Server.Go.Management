@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"Shorty.Server.Go.Mangment/pkg/logger"
+	"Shorty.Server.Go.Management/pkg/logger"
 	"github.com/jmoiron/sqlx"
 )
 

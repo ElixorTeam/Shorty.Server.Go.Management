@@ -1,11 +1,11 @@
 package middlewares
 
 import (
-	V1Domains "Shorty.Server.Go.Mangment/internal/business/domains/v1"
-	"Shorty.Server.Go.Mangment/internal/config"
-	"Shorty.Server.Go.Mangment/internal/constants"
-	"Shorty.Server.Go.Mangment/pkg/helpers"
-	"Shorty.Server.Go.Mangment/pkg/logger"
+	V1Domains "Shorty.Server.Go.Management/internal/business/domains/v1"
+	"Shorty.Server.Go.Management/internal/config"
+	"Shorty.Server.Go.Management/internal/constants"
+	"Shorty.Server.Go.Management/pkg/helpers"
+	"Shorty.Server.Go.Management/pkg/logger"
 	"context"
 	"crypto/rsa"
 	"fmt"
@@ -174,28 +174,6 @@ func verifyToken(ctx context.Context, r *redis.Client, tokenString string) (toke
 
 }
 
-func verifyTokenSession(tokenString string) (err error) {
-	req, err := http.NewRequest("GET", config.AppConfig.AUTHUserInfoEndpoint, nil)
-	if err != nil {
-		return err
-	}
-
-	req.Header.Set("Authorization", "Bearer "+tokenString)
-	client := &http.Client{}
-	resp, err := client.Do(req)
-	if err != nil {
-		return err
-	}
-
-	if resp.StatusCode != 200 {
-		return fmt.Errorf("user session is die")
-	}
-
-	logger.Info("token session is ok", nil)
-
-	return nil
-}
-
 func serializePublicKey(key rsa.PublicKey) string {
 	serialized := map[string]string{
 		"N": key.N.String(),
@@ -228,3 +206,26 @@ func deserializePublicKey(serializedKey string) rsa.PublicKey {
 		E: int(E),
 	}
 }
+
+// uncomment this if you want to verify user session in every request
+//func verifyTokenSession(tokenString string) (err error) {
+//	req, err := http.NewRequest("GET", config.AppConfig.AUTHUserInfoEndpoint, nil)
+//	if err != nil {
+//		return err
+//	}
+//
+//	req.Header.Set("Authorization", "Bearer "+tokenString)
+//	client := &http.Client{}
+//	resp, err := client.Do(req)
+//	if err != nil {
+//		return err
+//	}
+//
+//	if resp.StatusCode != 200 {
+//		return fmt.Errorf("user session is die")
+//	}
+//
+//	logger.Info("token session is ok", nil)
+//
+//	return nil
+//}

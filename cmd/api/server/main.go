@@ -1,11 +1,11 @@
 package server
 
 import (
-	"Shorty.Server.Go.Mangment/internal/config"
-	"Shorty.Server.Go.Mangment/internal/constants"
-	V1Routes "Shorty.Server.Go.Mangment/internal/http/routes/v1"
-	"Shorty.Server.Go.Mangment/internal/utils"
-	"Shorty.Server.Go.Mangment/pkg/logger"
+	"Shorty.Server.Go.Management/internal/config"
+	"Shorty.Server.Go.Management/internal/constants"
+	V1Routes "Shorty.Server.Go.Management/internal/http/routes/v1"
+	"Shorty.Server.Go.Management/internal/utils"
+	"Shorty.Server.Go.Management/pkg/logger"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
 	CorsMiddleware "github.com/gofiber/fiber/v2/middleware/cors"

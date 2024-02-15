@@ -1,8 +1,8 @@
 package utils
 
 import (
-	"Shorty.Server.Go.Mangment/internal/config"
-	"Shorty.Server.Go.Mangment/internal/datasources/drivers"
+	"Shorty.Server.Go.Management/internal/config"
+	"Shorty.Server.Go.Management/internal/datasources/drivers"
 	"github.com/redis/go-redis/v9"
 )
 

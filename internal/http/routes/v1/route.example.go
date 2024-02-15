@@ -1,8 +1,8 @@
 package v1
 
 import (
-	V1Handlers "Shorty.Server.Go.Mangment/internal/http/handlers/v1"
-	"Shorty.Server.Go.Mangment/internal/http/middlewares"
+	V1Handlers "Shorty.Server.Go.Management/internal/http/handlers/v1"
+	"Shorty.Server.Go.Management/internal/http/middlewares"
 	"github.com/gofiber/fiber/v2"
 	"github.com/redis/go-redis/v9"
 )
