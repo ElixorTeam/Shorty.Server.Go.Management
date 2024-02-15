@@ -1,8 +1,8 @@
 package utils
 
 import (
-	"Shorty.Server.Go.Mangment/internal/config"
-	"Shorty.Server.Go.Mangment/pkg/logger"
+	"Shorty.Server.Go.Management/internal/config"
+	"Shorty.Server.Go.Management/pkg/logger"
 	"errors"
 	"fmt"
 	"github.com/gofiber/fiber/v2"

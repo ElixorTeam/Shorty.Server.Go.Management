@@ -1,7 +1,7 @@
 package config
 
 import (
-	"Shorty.Server.Go.Mangment/internal/constants"
+	"Shorty.Server.Go.Management/internal/constants"
 	"github.com/go-playground/validator/v10"
 	"github.com/spf13/viper"
 	"log"

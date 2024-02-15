@@ -10,15 +10,17 @@ import (
 type ExampleRoute struct {
 	router         fiber.Router
 	AuthMiddleware func(roles ...string) fiber.Handler
-	V1Handlers.ExampleHandler
+	ExampleHandler *V1Handlers.ExampleHandler
 }
 
 func NewExampleRoute(api fiber.Router, rdc *redis.Client) *ExampleRoute {
 	AuthMiddleware := middlewares.KeycloakAuthMiddleware(rdc)
+	ExampleHandler := V1Handlers.NewExampleHandler()
 
 	return &ExampleRoute{
 		router:         api,
 		AuthMiddleware: AuthMiddleware,
+		ExampleHandler: ExampleHandler,
 	}
 }
 

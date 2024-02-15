@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"Shorty.Server.Go.Mangment/internal/constants"
+	"Shorty.Server.Go.Management/internal/constants"
 	"github.com/gofiber/fiber/v2"
 )
 
