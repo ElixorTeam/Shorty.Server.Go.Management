@@ -36,9 +36,18 @@ func NewApp() (*Server, error) {
 func setupRouter() *fiber.App {
 
 	router := fiber.New(fiber.Config{
-		AppName:     "Shorty Manage Server",
-		ReadTimeout: 20 * time.Second,
+		AppName:      "Shorty Manage Server",
+		ReadTimeout:  60 * time.Second,
+		ErrorHandler: utils.CustomErrorHandler,
 	})
+
+	router.Use(LoggerMiddleware.New(LoggerMiddleware.Config{
+		Format:        "[${ip}] [${time}] ${status} - ${method} ${path}\n",
+		DisableColors: false,
+		TimeFormat:    "02-01-2006/15:04:05",
+		TimeZone:      "Europe/Moscow",
+	}))
+	router.Use(HelmetMiddleware.New())
 
 	router.Use(CorsMiddleware.New(CorsMiddleware.Config{
 		AllowOrigins: constants.AllowOrigin,
@@ -47,12 +56,7 @@ func setupRouter() *fiber.App {
 	}))
 
 	router.Use(RecoverMiddleware.New())
-	router.Use(LoggerMiddleware.New(LoggerMiddleware.Config{
-		Format:        "[${ip}]:${port} ${status} - ${method} ${path}\n",
-		DisableColors: false,
-	}))
 
-	router.Use(HelmetMiddleware.New())
 	router.Get("/monitor", MonitorMiddleware.New(MonitorMiddleware.Config{
 		Title: "Shorty Manage Server",
 	}))

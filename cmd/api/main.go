@@ -8,11 +8,11 @@ import (
 )
 
 func main() {
-	numCpu := runtime.NumCPU()
-	logger.InfoF("Starting server with %d CPUs", nil, numCpu)
+	rtCpu := runtime.NumCPU()
 
-	if runtime.NumCPU() > 2 {
-		runtime.GOMAXPROCS(numCpu / 2)
+	if rtCpu > 2 {
+		runtime.GOMAXPROCS(rtCpu / 2)
+		rtCpu = rtCpu / 2
 	}
 
 	app, err := server.NewApp()
@@ -20,6 +20,7 @@ func main() {
 		logger.Panic(err.Error(), nil)
 	}
 
+	logger.InfoF("Starting server with %d CPUs", nil, rtCpu)
 	if err := app.Start(); err != nil {
 		logger.Panic("Server error", logrus.Fields{"error": err.Error()})
 	}
